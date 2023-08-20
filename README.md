@@ -18,7 +18,7 @@ git clone https://github.com/yourusername/bank-branch-api.git
 cd bank-branch-api
 ```
 
-###Setting Database
+### Setting Database
 ```bash
 python
 ```
@@ -27,9 +27,15 @@ from app import db
 db.create_all()
 exit()
 ```
-###Start the server by 
+### Start the server by 
 ```python
 app.py
 ```
+API will be available at http://localhost:5000/
+
+### Endpoints
+- '/' Home page
+- '/all' Get all bank branches
+- '/search?loc=city_name' Search bank branches by location
 
 
