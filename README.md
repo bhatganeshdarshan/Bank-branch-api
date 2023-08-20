@@ -14,7 +14,7 @@ pip install Flask Flask-SQLAlchemy
 ### Running the API
 1.Clone the repo
 ```bash
-git clone https://github.com/yourusername/bank-branch-api.git
+git clone https://github.com/bhatganeshdarshan/bank-branch-api.git
 cd bank-branch-api
 ```
 
