@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Branch API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            background-color: #f4f4f4;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .endpoint {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .response-example {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bank Branch API Documentation</h1>
+
+        <h2>Base URL</h2>
+        <p><code>http://localhost:5000/</code></p>
+
+        <div class="endpoint">
+            <h2>1. Home Page</h2>
+            <p><strong>URL:</strong> <code>/</code></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Description:</strong> Returns the homepage of the API. This is a basic HTML page.</p>
+        </div>
+
+        <div class="endpoint">
+            <h2>2. Get All Bank Branches</h2>
+            <p><strong>URL:</strong> <code>/all</code></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Description:</strong> Retrieves a list of all bank branches stored in the database.</p>
+            <div class="response-example">
+                <p><strong>Response:</strong></p>
+                <pre>
+{
+    "banks": [
+        {
+            "ifsc": "ABCD1234567",
+            "bank_id": 1,
+            "branch": "Example Branch",
+            "address": "123 Main Street",
+            "city": "Example City",
+            "district": "Example District",
+            "state": "Example State",
+            "bank_name": "Example Bank"
+        },
+        // ... (more branches)
+    ]
+}
+                </pre>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <h2>3. Search for Bank Branches by Location</h2>
+            <p><strong>URL:</strong> <code>/search?loc=city_name</code></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Parameters:</strong></p>
+            <p class="code">loc (query parameter): The location or branch name to search for.</p>
+            <p><strong>Description:</strong> Searches for bank branches by location or branch name and returns the matching results.</p>
+            <div class="response-example">
+                <p><strong>Response (200 OK):</strong></p>
+                <pre>
+{
+    "banks": [
+        {
+            "ifsc": "ABCD1234567",
+            "bank_id": 1,
+            "branch": "Example Branch",
+            "address": "123 Main Street",
+            "city": "Example City",
+            "district": "Example District",
+            "state": "Example State",
+            "bank_name": "Example Bank"
+        },
+        // ... (more matching branches)
+    ]
+}
+                </pre>
+                <p><strong>Response (404 Not Found):</strong></p>
+                <pre>
+{
+    "error": {
+        "error": "Did not find any banks at that location !!"
+    }
+}
+                </pre>
+            </div>
+        </div>
+
+        <h2>Error Handling</h2>
+        <p>- If there are any errors in the API request, appropriate HTTP status codes and error messages will be returned.</p>
+        <p>- Common error status codes include:</p>
+        <p class="error">404 (Not Found): When searching for branches and no matching branches are found.</p>
+        <p class="error">500 (Internal Server Error): If there are internal server errors or issues with the database.</p>
+    </div>
+</body>
+</html>
